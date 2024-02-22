@@ -2,6 +2,7 @@ package repository.impl;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -47,6 +48,11 @@ public class AccountRepositoryImpl implements AccountRepository {
   @Override
   public Optional<Account> find(String accountId) {
     return Optional.ofNullable(allAccount.get(accountId));
+  }
+
+  @Override
+  public List<Account> findAll() {
+    return allAccount.values().stream().toList();
   }
 
 }

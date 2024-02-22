@@ -13,9 +13,9 @@ import view.ansi.ANSI.Builder;
 public class TagProcessor {
 
   public static String apply(String str) {
-    String strProcessed = str.replaceAll("</([a-zA-Z]+-)?[a-zA-Z]+>", ANSI.builder().build());
+    String strProcessed = str.replaceAll("</([A-Z]+-)?[A-Z]+>", ANSI.builder().build());
 
-    Pattern pattern = Pattern.compile("<([a-zA-Z]+-)?[a-zA-Z]+>");
+    Pattern pattern = Pattern.compile("<([A-Z]+-)?[A-Z]+>");
     Matcher matcher = pattern.matcher(strProcessed);
 
     List<String> tags = matcher.results().map(MatchResult::group).toList();
@@ -28,9 +28,6 @@ public class TagProcessor {
       }
       if (param.length >= 2) {
         style.setStyle(Style.valueOf(param[1].toUpperCase()));
-      }
-      if (param.length >= 3) {
-        style.setBackground(Color.valueOf(param[2].toUpperCase()));
       }
       strProcessed = strProcessed.replaceAll(tag, style.build());
     }

@@ -1,5 +1,6 @@
 package repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import domain.account.Account;
@@ -14,4 +15,6 @@ public interface AccountRepository {
   static AccountRepository getInstance() {
     return AccountRepositoryImpl.getInstance();
   }
+
+  List<Account> findAll();
 }

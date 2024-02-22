@@ -5,7 +5,6 @@ import java.util.Deque;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
 import domain.account.savingsaccount.process.SavingsAccountProcess;
-import logger.Logger;
 import service.TimeService;
 
 class SavingsAccountQueue {
@@ -14,8 +13,6 @@ class SavingsAccountQueue {
   private final TimeService timeService;
 
   private static final int NEGATIVE_SIGNUM = -1;
-
-  private Logger logger = new Logger(getClass());
 
   public SavingsAccountQueue(String accountId) {
     queue = new ConcurrentLinkedDeque<>();
@@ -26,7 +23,6 @@ class SavingsAccountQueue {
   public void addDeposit(BigDecimal depositAmount) {
     SavingsDeposit newDeposit = new SavingsDeposit(depositAmount, timeService.currentDay().plusMonths(1));
     queue.offerLast(newDeposit);
-    logger.debug(queue);
   }
 
   public void withdrawAmount(BigDecimal withdrawalAmount) {
@@ -39,7 +35,6 @@ class SavingsAccountQueue {
       }
       remainingWithdrawalAmount = remainingAmountAfterWithdrawal;
     }
-    logger.debug(queue);
   }
 
   private BigDecimal requeueSavingsDeposit(SavingsDeposit currentDeposit, BigDecimal remainingAmountAfterWithdrawal) {

@@ -63,4 +63,5 @@ public abstract class Account implements Operator {
   public static Account createSavingsAccount(String accountHolderName, String accountHolderCPF){
     return AccountRepository.getInstance().createSavingsAccount(accountHolderName, accountHolderCPF);
   }
+
 }
