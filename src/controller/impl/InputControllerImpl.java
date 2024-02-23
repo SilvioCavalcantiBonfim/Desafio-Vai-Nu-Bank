@@ -22,7 +22,6 @@ public class InputControllerImpl implements InputController {
     String data;
     while (true) {
       data = scannerInstance.nextLine();
-      System.out.println(data);
       if (validator.test(data)) {
         break;
       } else {
@@ -55,11 +54,33 @@ public class InputControllerImpl implements InputController {
     return data;
   }
 
+  @Override
+  public Double readDouble(Runnable beforeExec, Predicate<Double> validator, Runnable err) {
+    Double data;
+    while (true) {
+      try {
+        beforeExec.run();
+        data = scannerInstance.nextDouble();
+        if (validator.test(data)) {
+          break;
+        } else {
+          err.run();
+        }
+      } catch (IllegalArgumentException e) {
+        err.run();
+      } catch (InputMismatchException e) {
+        scannerInstance.nextLine();
+        err.run();
+      }
+    }
+    scannerInstance.nextLine();
+    return data;
+  }
+
   public static InputController getInstance() {
     if (Objects.isNull(instance)) {
       instance = new InputControllerImpl();
     }
     return instance;
   }
-
 }

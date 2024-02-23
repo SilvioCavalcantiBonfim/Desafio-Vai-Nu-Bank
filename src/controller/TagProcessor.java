@@ -1,4 +1,4 @@
-package view;
+package controller;
 
 import java.util.List;
 import java.util.regex.MatchResult;

@@ -55,4 +55,9 @@ public class AccountRepositoryImpl implements AccountRepository {
     return allAccount.values().stream().toList();
   }
 
+  @Override
+  public void delete(String accountId) {
+    allAccount.remove(accountId);
+  }
+
 }

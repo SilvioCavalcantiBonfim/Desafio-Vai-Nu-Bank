@@ -4,7 +4,7 @@ import java.util.Objects;
 import java.util.function.Consumer;
 
 import controller.OutputController;
-import view.TagProcessor;
+import controller.TagProcessor;
 
 public class OutputControllerImpl implements OutputController {
 

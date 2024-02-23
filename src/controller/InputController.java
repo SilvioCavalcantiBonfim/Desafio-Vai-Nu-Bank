@@ -11,6 +11,8 @@ public interface InputController {
 
   Integer readInteger(Runnable beforeExec, Predicate<Integer> validator, Runnable err);
 
+  Double readDouble(Runnable beforeExec, Predicate<Double> validator, Runnable err);
+
   public static InputController getInstance() {
     return InputControllerImpl.getInstance();
   }

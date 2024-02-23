@@ -17,4 +17,6 @@ public interface AccountRepository {
   }
 
   List<Account> findAll();
+
+  void delete(String accountId);
 }

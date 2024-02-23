@@ -50,7 +50,8 @@ public class SavingsAccountProcess extends TimerTask {
       BigDecimal currentValue = allDepositProccess.stream().map(e -> e.value()).reduce(BigDecimal.ZERO, (a, v) -> a.add(v));
       queue.removeIf(allDepositProccess::contains);
       queue.add(new SavingsDeposit(currentValue, currentData.plusMonths(1)));
-      currentAccountProcess.deposit(currentValue.multiply(BigDecimal.valueOf(0.005)));
+      if(accountRepository.find(accountId).isPresent())
+        currentAccountProcess.deposit(currentValue.multiply(BigDecimal.valueOf(0.005)));
     }
   }
 

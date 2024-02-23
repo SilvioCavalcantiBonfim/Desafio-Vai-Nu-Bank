@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import controller.InputController;
+import controller.Message;
 import controller.OutputController;
-import view.output.Message;
 
 public class Menu {
 
@@ -45,11 +45,15 @@ public class Menu {
       Integer option = inputController.readInteger(
           () -> drawnMenu(),
           (value) -> Objects.nonNull(options.get(value)),
-          () -> outputController.print(Message.INVALID_OPTION_MESSAGE));
+          () -> outputController.print(Message.INVALID_OPTION));
       if (Objects.nonNull(option)) {
         options.get(option).active();
         option = null;
       }
     } while (infinityMenuEnabled);
+  }
+
+  public void stopMenu(){
+    infinityMenuEnabled = false;
   }
 }
