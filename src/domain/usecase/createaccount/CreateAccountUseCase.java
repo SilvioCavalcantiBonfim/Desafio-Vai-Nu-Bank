@@ -19,9 +19,11 @@ public class CreateAccountUseCase extends UseCase {
     String cpf = getData(RegexPatterns.CPF_REGEX, Message.REQUEST_VALID_CPF, Message.INVALID_CPF_FORMAT);
 
     UseCase createSavingsAccountUseCase = new CreateSavingsAccountUseCase(fullName, cpf);
+    UseCase createCurrentAccountUseCase = new CreateCurrentAccountUseCase(fullName, cpf);
     UseCase cancelCreateAccountUseCase = new CancelCreateAccountUseCase();
 
     createAccountMenu.addOptionWithAction(1, Message.SAVINGS_ACCOUNT,createSavingsAccountUseCase::execute);
+    createAccountMenu.addOptionWithAction(2, Message.CURRENT_ACCOUNT,createCurrentAccountUseCase::execute);
     createAccountMenu.addOptionWithAction(0, Message.CANCEL_CREATE_ACCOUNT_OPTION, cancelCreateAccountUseCase::execute);
 
     Integer optionSelected;

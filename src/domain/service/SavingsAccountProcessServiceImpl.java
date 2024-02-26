@@ -13,9 +13,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import domain.entity.account.Account;
 import domain.entity.account.savingsaccount.SavingsDeposit;
 
-class SavingsAccountQueueProcessServiceImpl extends TimerTask implements SavingsAccountQueueProcessService {
+class SavingsAccountProcessServiceImpl extends TimerTask implements SavingsAccountProcessService {
 
-  private static SavingsAccountQueueProcessServiceImpl instance = null;
+  private static SavingsAccountProcessServiceImpl instance = null;
   private static Timer timer = null;
 
   private final TimeService timeService;
@@ -23,7 +23,7 @@ class SavingsAccountQueueProcessServiceImpl extends TimerTask implements Savings
 
   private Map<String, Deque<SavingsDeposit>> allSavingsAccountQueue = new ConcurrentHashMap<>();
 
-  private SavingsAccountQueueProcessServiceImpl() {
+  private SavingsAccountProcessServiceImpl() {
     timeService = TimeService.getInstance();
     accountService = AccountService.getInstance();
   }
@@ -62,9 +62,9 @@ class SavingsAccountQueueProcessServiceImpl extends TimerTask implements Savings
     }
   }
 
-  public static SavingsAccountQueueProcessServiceImpl getInstance() {
+  public static SavingsAccountProcessServiceImpl getInstance() {
     if (Objects.isNull(instance)) {
-      instance = new SavingsAccountQueueProcessServiceImpl();
+      instance = new SavingsAccountProcessServiceImpl();
     }
     return instance;
   }

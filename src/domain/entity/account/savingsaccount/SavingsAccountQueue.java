@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.Deque;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
-import domain.service.SavingsAccountQueueProcessService;
+import domain.service.SavingsAccountProcessService;
 import domain.service.TimeService;
 
 class SavingsAccountQueue {
@@ -17,7 +17,7 @@ class SavingsAccountQueue {
 
   public SavingsAccountQueue(String accountId) {
     queue = new ConcurrentLinkedDeque<>();
-    SavingsAccountQueueProcessService.getInstance().addSavingsDepositQueue(accountId, queue);
+    SavingsAccountProcessService.getInstance().addSavingsDepositQueue(accountId, queue);
     timeService = TimeService.getInstance();
   }
 

@@ -14,7 +14,8 @@ public class BalanceAccountUseCase extends UseCase{
   
   @Override
   public void execute() {
-    outputController.print(String.format(Message.ACCOUNT_BALANCE_FORMAT, account.getValue()));
+    String accountBalanceFormat = account.getValue().signum() == -1? Message.ACCOUNT_NEGATIVE_BALANCE_FORMAT : Message.ACCOUNT_BALANCE_FORMAT;
+    outputController.print(String.format(accountBalanceFormat, account.getValue()));
   }
   
 }

@@ -3,7 +3,7 @@ package domain.entity.account;
 import java.math.BigDecimal;
 import java.util.function.Supplier;
 
-class AccountValidator {
+public class AccountValidator {
 
   private AccountValidator(){}
 

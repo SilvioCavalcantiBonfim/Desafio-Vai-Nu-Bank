@@ -21,7 +21,9 @@ public class Message {
 
         public static final String DIVISION = "\n+-----------------+--------------------------------+";
 
-        public static final String LEFT_ALIGN_FORMAT = "\n| <MAGENTA>%-15s</MAGENTA> | <WHITE-BOLD>%-30s</WHITE-BOLD> |";
+        public static final String LEFT_ALIGN_FORMAT = "\n| <MAGENTA-BOLD>%-15s</MAGENTA-BOLD> | <WHITE-BOLD>%-30s</WHITE-BOLD> |";
+
+        public static final String LEFT_ALIGN_FORMAT_CURRNET_ACCOUNT = "\n| <PURPLE-BOLD>%-15s</PURPLE-BOLD> | <WHITE-BOLD>%-30s</WHITE-BOLD> |";
 
         public static final String TABLE_TITLE = "\n| <WHITE-BOLD>ID da Conta</WHITE-BOLD>     | <WHITE-BOLD>Nome do Titular</WHITE-BOLD>                |";
 
@@ -32,9 +34,9 @@ public class Message {
         
         public static final String BACK = "<YELLOW-BOLD>Retornar</YELLOW-BOLD> ao menu anterior";
         
-        public static final String SAVINGS_ACCOUNT = "<PURPLE-BOLD>Conta Poupança</PURPLE-BOLD>";
+        public static final String SAVINGS_ACCOUNT = "Conta <MAGENTA-BOLD>Poupança</MAGENTA-BOLD>";
         
-        public static final String CURRENT_ACCOUNT = "<PURPLE-BOLD>Conta Corrente</PURPLE-BOLD>";
+        public static final String CURRENT_ACCOUNT = "Conta <PURPLE-BOLD>Corrente</PURPLE-BOLD>";
         
         public static final String INVALID_CPF_FORMAT = "\n<RED-BOLD>Formato de CPF inválido</RED-BOLD>. Por favor, insira um CPF no formato <WHITE-BOLD>000.000.000-00</WHITE-BOLD>: ";
         
@@ -57,6 +59,8 @@ public class Message {
         public static final String REQUEST_DEPOSIT_VALUE = "\nPor favor, insira o valor que deseja depositar: ";
         
         public static final String ACCOUNT_BALANCE_FORMAT = "\nO saldo da sua conta é: <GREEN-BOLD>VnW¢</GREEN-BOLD> <WHITE-BOLD>%.2f</WHITE-BOLD>\n";
+        
+        public static final String ACCOUNT_NEGATIVE_BALANCE_FORMAT = "\nO saldo da sua conta é: <GREEN-BOLD>VnW¢</GREEN-BOLD> <RED-BOLD>%.2f</RED-BOLD>\n";
         
         public static final String REQUEST_WITHDRAW_VALUE = "\nPor favor, insira o valor que deseja sacar: ";
         

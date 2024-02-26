@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import domain.entity.account.Account;
 import domain.entity.account.Person;
+import domain.entity.account.currentaccount.CurrentAccount;
 import domain.entity.account.savingsaccount.SavingsAccount;
 import domain.repository.AccountRepository;
 import exception.AccountNotFoundException;
@@ -31,15 +32,19 @@ class AccountServiceImpl implements AccountService{
   @Override
   public Account createSavingsAccount(String accountHolderName, String accountHolderCPF) {
     
-    String accountId = IntStream.range(0, 10).mapToObj(d -> Integer.toString(rng.nextInt(10)))
-        .collect(Collectors.joining(""));
+    String accountId = generateAccountId();
 
-    Account newAccount = new SavingsAccount(accountId, accountHolderName, accountHolderCPF,
+    Account newAccount = new SavingsAccount("00"+accountId, accountHolderName, accountHolderCPF,
         BigDecimal.valueOf(10));
 
     accountRepository.save(newAccount);
     
     return newAccount;
+  }
+
+  private String generateAccountId() {
+    return IntStream.range(0, 8).mapToObj(d -> Integer.toString(rng.nextInt(10)))
+        .collect(Collectors.joining(""));
   }
   
   @Override
@@ -93,6 +98,15 @@ class AccountServiceImpl implements AccountService{
     account.removeAllDependent();
     currentDependents.forEach(dependent -> account.addDependent(dependent.name(), dependent.cpf()));
 
+  }
+
+  @Override
+  public Account createCurrentAccount(String accountHolderName, String accountHolderCPF) {
+    String accountId = generateAccountId();
+    Account account = new CurrentAccount("10"+accountId, accountHolderName, accountHolderCPF, BigDecimal.valueOf(10));
+
+    accountRepository.save(account);
+    return account;
   }
   
 }

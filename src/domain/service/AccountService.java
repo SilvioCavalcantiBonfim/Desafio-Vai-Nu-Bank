@@ -11,6 +11,8 @@ import exception.AlreadyDependentException;
 
 public interface AccountService {
   Account createSavingsAccount(String accountHolderName, String accountHolderCPF);
+  
+  Account createCurrentAccount(String accountHolderName, String accountHolderCPF);
 
   void transfer(String sendAccountId, String receiveAccountId, BigDecimal value);
 
