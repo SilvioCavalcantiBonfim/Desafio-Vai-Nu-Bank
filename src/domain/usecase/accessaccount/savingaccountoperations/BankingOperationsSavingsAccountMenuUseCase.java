@@ -6,6 +6,7 @@ import domain.usecase.Message;
 import domain.usecase.UseCase;
 import domain.usecase.accessaccount.commonoperations.BalanceAccountUseCase;
 import domain.usecase.accessaccount.commonoperations.DeleteAccountUseCase;
+import domain.usecase.accessaccount.commonoperations.DependentManagerUseCase;
 import domain.usecase.accessaccount.commonoperations.DepositUseCase;
 import domain.usecase.accessaccount.commonoperations.TransferUseCase;
 import domain.usecase.accessaccount.commonoperations.WithdrawUseCase;
@@ -21,6 +22,7 @@ public class BankingOperationsSavingsAccountMenuUseCase extends UseCase {
     UseCase deposit = new DepositUseCase(account);
     UseCase withdraw = new WithdrawUseCase(account);
     UseCase transfer = new TransferUseCase(account);
+    UseCase dependentManager = new DependentManagerUseCase(account);
 
 
     
@@ -28,7 +30,8 @@ public class BankingOperationsSavingsAccountMenuUseCase extends UseCase {
     menu.addOptionWithAction(2, Message.DEPOSIT, deposit::execute);
     menu.addOptionWithAction(3, Message.WITHDRAW, withdraw::execute);
     menu.addOptionWithAction(4, Message.TRANSFER, transfer::execute);
-    menu.addOptionWithAction(5, Message.DELETE_ACCOUNT, this.delete(account.getAccountId()));
+    menu.addOptionWithAction(5, Message.DEPENDENT_MANAGER, dependentManager::execute);
+    menu.addOptionWithAction(6, Message.DELETE_ACCOUNT, this.delete(account.getAccountId()));
     menu.addOptionWithAction(0, Message.BACK, this::stopMenu);
   }
 
@@ -46,7 +49,6 @@ public class BankingOperationsSavingsAccountMenuUseCase extends UseCase {
 
   @Override
   public void execute() {
-    outputController.print(Message.WELCOME);
     while (loginState) {
       outputController.print(menu.getMenuString());
       Integer optionSelected = inputController.nextInteger();

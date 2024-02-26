@@ -1,22 +1,24 @@
 package domain.entity.account;
 
 import java.math.BigDecimal;
-
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 import exception.InvalidDecrementAmountException;
 import exception.InvalidIncrementAmountException;
 
 public abstract class Account implements Operator {
 
   private final String accountId;
-  private final String accountHolderName;
-  private final String accountHolderCPF;
+  private final Person owner;
+  private final List<Person> dependent;
   private BigDecimal value;
 
   public Account(String accountId, String accountHolderName, String accountHolderCPF, BigDecimal value) {
     this.accountId = accountId;
-    this.accountHolderName = accountHolderName;
-    this.accountHolderCPF = accountHolderCPF;
+    this.owner = new Person(accountHolderName, accountHolderCPF);
     this.value = value;
+    dependent = new LinkedList<>();
   }
 
   public String getAccountId() {
@@ -24,15 +26,27 @@ public abstract class Account implements Operator {
   }
 
   public String getAccountHolderName() {
-    return accountHolderName;
+    return owner.name();
   }
 
   public String getAccountHolderCPF() {
-    return accountHolderCPF;
+    return owner.cpf();
   }
 
   public BigDecimal getValue() {
     return value;
+  }
+
+  public boolean addDependent(String dependentName, String dependentCPF){
+    return dependent.add(new Person(dependentName, dependentCPF));
+  }
+
+  public List<Person> getAllDependents(){
+    return Collections.unmodifiableList(dependent);
+  }
+
+  public void removeAllDependent(){
+    dependent.clear();
   }
 
   protected void incrementValue(BigDecimal incrementAmount) {

@@ -19,11 +19,11 @@ public class Message {
 
         public static final String OPTION_EXIT = "<RED-BOLD>Sair</RED-BOLD> do Aplicativo";
 
-        public static final String DIVISION = "\n+-----------------+--------------------------------+\n";
+        public static final String DIVISION = "\n+-----------------+--------------------------------+";
 
-        public static final String LEFT_ALIGN_FORMAT = DIVISION + "| <MAGENTA>%-15s</MAGENTA> | %-30s |";
+        public static final String LEFT_ALIGN_FORMAT = "\n| <MAGENTA>%-15s</MAGENTA> | <WHITE-BOLD>%-30s</WHITE-BOLD> |";
 
-        public static final String TABLE_TITLE = "| <WHITE-BOLD>ID da Conta</WHITE-BOLD>     | <WHITE-BOLD>Nome do Titular</WHITE-BOLD>                |";
+        public static final String TABLE_TITLE = "\n| <WHITE-BOLD>ID da Conta</WHITE-BOLD>     | <WHITE-BOLD>Nome do Titular</WHITE-BOLD>                |";
 
         
         public static final String REQUEST_ACCOUNTID = "\nPor favor, insira o número da conta: ";
@@ -68,11 +68,9 @@ public class Message {
         
         public static final String ILLEGAL_TRANSFER_VALUE = "\n<RED-BOLD>Valor de transferência inválido</RED-BOLD>. Cancelando operação.";
         
-        // messagens da create account
-        
         public static final String CHOOSE_ACCOUNT_TYPE_PROMPT = "\nEscolha o tipo de <WHITE-BOLD>conta</WHITE-BOLD>:\n\n";
         
-        public static final String REQUEST_FULL_NAME = "\nPor favor, insira seu nome completo: ";
+        public static final String REQUEST_FULL_NAME = "\nPor favor, insira <WHITE-BOLD>seu nome completo</WHITE-BOLD>: ";
         
         public static final String ILLEGAL_FULL_NAME = "\n<RED-BOLD>Nome inválido</RED-BOLD>. Por favor, insira seu nome completo (<WHITE-BOLD>primeiro nome</WHITE-BOLD> e <WHITE-BOLD>sobrenome</WHITE-BOLD>): ";
 
@@ -93,5 +91,25 @@ public class Message {
         public static final String WITHDRAW_SUCCESS = "\n<WHITE-BOLD>Saque</WHITE-BOLD> realizado com <GREEN-BOLD>sucesso</GREEN-BOLD>.\r\n";
 
         public static final String TRANSFER_SUCCESS = "\n<WHITE-BOLD>Transferência</WHITE-BOLD> realizado com <GREEN-BOLD>sucesso</GREEN-BOLD>.\r\n";
+
+        public static final String DEPENDENT_ADD = "<GREEN-BOLD>Adicionar</GREEN-BOLD> novo dependente";
+
+        public static final String DEPENDENT_REMOVE = "<RED-BOLD>Remover</RED-BOLD> dependente";
+
+        public static final String DEPENDENT_MANAGER = "Gerenciar <WHITE-BOLD>dependentes</WHITE-BOLD>";
+
+        public static final String REQUEST_DEPENDENT_FULL_NAME = "\nPor favor, insira o <WHITE-BOLD>nome completo</WHITE-BOLD> do dependente: ";
+
+        public static final String DEPENDENT_ADD_SUCCESS = "<WHITE-BOLD>%s</WHITE-BOLD> foi adicionado com <GREEN-BOLD>sucesso</GREEN-BOLD> como seu dependente.";
+
+        public static final String ALL_DEPENDENT = "<YELLOW-BOLD>Visualizar</YELLOW-BOLD> todos os dependentes";
+
+        public static final String TABLE_TITLE_DEPENDENT = "\n| <WHITE-BOLD>Nome</WHITE-BOLD>            | <WHITE-BOLD>CPF</WHITE-BOLD>                            |"+DIVISION;
+
+        public static final String DEPENDENT_REMOVE_OPTION = "<WHITE-BOLD>%s</WHITE-BOLD>";
+
+        public static final String DEPENDENT_NOT_FOUNT = "\n<RED-BOLD>Você não possui dependentes cadastrados.</RED-BOLD>\n\n";
+
+        public static final String DEPENDENT_ALREADY = "\nVocê já possui um dependente com o CPF <YELLOW-BOLD>%s</YELLOW-BOLD> cadastrado.\n\n";
         
 }

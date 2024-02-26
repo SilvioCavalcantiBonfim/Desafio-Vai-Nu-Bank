@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Optional;
 
 import domain.entity.account.Account;
+import domain.entity.account.Person;
+import exception.AccountNotFoundException;
+import exception.AlreadyDependentException;
 
 public interface AccountService {
   Account createSavingsAccount(String accountHolderName, String accountHolderCPF);
@@ -14,6 +17,12 @@ public interface AccountService {
   Optional<Account> findById(String accountId);
 
   List<Account> findAll();
+
+  List<Person> findAllDependents(String accountId) throws AccountNotFoundException;
+
+  void createDependent(String accountId, String fullname, String cpf) throws AccountNotFoundException, AlreadyDependentException;
+
+  void removeDependent(String accountId, String cpf) throws AccountNotFoundException;
   
   void delete(String accountId);
 

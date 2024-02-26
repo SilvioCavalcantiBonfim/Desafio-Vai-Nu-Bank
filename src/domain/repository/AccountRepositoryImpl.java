@@ -14,8 +14,7 @@ class AccountRepositoryImpl implements AccountRepository {
 
   private Map<String, Account> allAccount = new ConcurrentHashMap<>();
 
-  private AccountRepositoryImpl() {
-  }
+  private AccountRepositoryImpl() { }
 
   public static AccountRepository getInstance() {
     if (Objects.isNull(instance)) {

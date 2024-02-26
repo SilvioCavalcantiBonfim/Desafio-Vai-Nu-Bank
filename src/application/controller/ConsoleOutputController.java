@@ -20,6 +20,11 @@ class ConsoleOutputController implements OutputController {
     output.accept(HTMLTagToANSIConverter.convert(txt));
   }
 
+  @Override
+  public void printf(String txt, Object ...args){
+    output.accept(String.format(HTMLTagToANSIConverter.convert(txt), args));
+  }
+
   public static OutputController getInstance(){
     if(Objects.isNull(instance)){
       instance = new ConsoleOutputController(System.out::print);
