@@ -1,4 +1,4 @@
-package domain.usecase.accessaccount.commonoperations.dependentsoperation;
+package domain.usecase.accessaccount.operation.dependentsoperation;
 
 import application.view.RegexPatterns;
 import domain.service.AccountService;

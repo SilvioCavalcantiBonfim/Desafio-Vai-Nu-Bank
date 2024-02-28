@@ -1,9 +1,8 @@
-package domain.usecase.accessaccount.commonoperations;
+package domain.usecase.accessaccount.operation;
 
 import java.math.BigDecimal;
 
 import application.view.RegexPatterns;
-import domain.entity.account.Account;
 import domain.service.AccountService;
 import domain.usecase.Message;
 import domain.usecase.UseCase;
@@ -13,21 +12,21 @@ import exception.InvalidIncrementAmountException;
 
 public class TransferUseCase extends UseCase {
 
-  private final Account account;
+  private final String accountId;
   private final AccountService accountService;
 
-  public TransferUseCase(Account account) {
-    this.account = account;
+  public TransferUseCase(String accountId) {
+    this.accountId = accountId;
     this.accountService = AccountService.getInstance();
   }
 
   @Override
   public void execute() {
-    String accountId = getData(RegexPatterns.ACCOUNT_ID_REGEX, Message.REQUEST_ACCOUNTID, Message.ILLEGAL_ACCOUNT_ID_FORMAT);
+    String fromAccountId = getData(RegexPatterns.ACCOUNT_ID_REGEX, Message.REQUEST_ACCOUNTID, Message.ILLEGAL_ACCOUNT_ID_FORMAT);
     try {
       outputController.print(Message.REQUEST_TRANSFER_VALUE);
       Double value = inputController.nextDouble();
-      accountService.transfer(account.getAccountId(), accountId, BigDecimal.valueOf(value));
+      accountService.transfer(accountId, fromAccountId, BigDecimal.valueOf(value));
       outputController.print(Message.TRANSFER_SUCCESS);
     } catch (NumberFormatException e) {
       outputController.print(Message.ILLEGAL_TRANSFER_VALUE);

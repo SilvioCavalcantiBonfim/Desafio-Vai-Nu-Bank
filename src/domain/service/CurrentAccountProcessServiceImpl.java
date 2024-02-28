@@ -43,9 +43,11 @@ class CurrentAccountProcessServiceImpl extends TimerTask implements CurrentAccou
   public void run() {
     final Set<String> nextSetProcess = new HashSet<>();
     allAccountProcess.stream().forEach(accountId -> {
-      CurrentAccount account = (CurrentAccount) accountService.findById(accountId).get();
-      account.processOverdraftBalance();
-      nextSetProcess.add(accountId);
+      accountService.findById(accountId).ifPresent((account) -> {
+        CurrentAccount currentAccount = (CurrentAccount) account;
+        currentAccount.processOverdraftBalance();
+        nextSetProcess.add(accountId);
+      });
     });
     allAccountProcess.clear();
     allAccountProcess.addAll(nextSetProcess);

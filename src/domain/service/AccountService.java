@@ -10,6 +10,7 @@ import exception.AccountNotFoundException;
 import exception.AlreadyDependentException;
 
 public interface AccountService {
+  
   Account createSavingsAccount(String accountHolderName, String accountHolderCPF);
   
   Account createCurrentAccount(String accountHolderName, String accountHolderCPF);
@@ -27,6 +28,12 @@ public interface AccountService {
   void removeDependent(String accountId, String cpf) throws AccountNotFoundException;
   
   void delete(String accountId);
+
+  BigDecimal getBalanceAccount(String accountId);
+
+  void deposit(String accountId, BigDecimal value);
+  
+  void withdraw(String accountId, BigDecimal value);
 
   public static AccountService getInstance() {
     return AccountServiceImpl.getInstance();

@@ -1,18 +1,20 @@
-package domain.usecase.accessaccount.commonoperations;
+package domain.usecase.accessaccount.operation;
 
 import java.math.BigDecimal;
 
-import domain.entity.account.Account;
+import domain.service.AccountService;
 import domain.usecase.Message;
 import domain.usecase.UseCase;
 import exception.InvalidIncrementAmountException;
 
 public class DepositUseCase extends UseCase {
 
-  private final Account account;
+  private final String accountId;
+  private final AccountService accountService;
 
-  public DepositUseCase(Account account) {
-    this.account = account;
+  public DepositUseCase(String accountId) {
+    this.accountId = accountId;
+    this.accountService = AccountService.getInstance();
   }
 
   @Override
@@ -20,7 +22,7 @@ public class DepositUseCase extends UseCase {
     outputController.print(Message.REQUEST_DEPOSIT_VALUE);
     try {
       Double value = inputController.nextDouble();
-      account.deposit(BigDecimal.valueOf(value));
+      accountService.deposit(accountId, BigDecimal.valueOf(value));
       outputController.print(Message.DEPOSIT_SUCCESS);
     } catch (NumberFormatException e) {
       outputController.print(Message.ILLEGAL_DEPOSIT_VALUE);

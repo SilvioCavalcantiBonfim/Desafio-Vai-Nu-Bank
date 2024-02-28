@@ -10,7 +10,7 @@ import exception.InvalidIncrementAmountException;
 
 public class CurrentAccount extends Account {
 
-  private final BigDecimal OVERDRAFT_DAILY_RATE = BigDecimal.valueOf(1.0025);
+  private static final BigDecimal OVERDRAFT_DAILY_RATE = BigDecimal.valueOf(1.0025);
 
   private BigDecimal overdraftBalance;
   private final CurrentAccountProcessService currentAccountProcessService;

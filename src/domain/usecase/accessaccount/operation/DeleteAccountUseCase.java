@@ -1,4 +1,4 @@
-package domain.usecase.accessaccount.commonoperations;
+package domain.usecase.accessaccount.operation;
 
 import domain.service.AccountService;
 import domain.usecase.UseCase;

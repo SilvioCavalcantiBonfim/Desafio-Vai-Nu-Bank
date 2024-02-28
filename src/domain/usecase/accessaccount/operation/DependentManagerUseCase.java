@@ -1,25 +1,24 @@
-package domain.usecase.accessaccount.commonoperations;
+package domain.usecase.accessaccount.operation;
 
 import application.view.menu.Menu;
-import domain.entity.account.Account;
 import domain.usecase.Message;
 import domain.usecase.UseCase;
-import domain.usecase.accessaccount.commonoperations.dependentsoperation.AddDependentUseCase;
-import domain.usecase.accessaccount.commonoperations.dependentsoperation.RemoveDependentUseCase;
-import domain.usecase.accessaccount.commonoperations.dependentsoperation.ViewDependentUseCase;
+import domain.usecase.accessaccount.operation.dependentsoperation.AddDependentUseCase;
+import domain.usecase.accessaccount.operation.dependentsoperation.RemoveDependentUseCase;
+import domain.usecase.accessaccount.operation.dependentsoperation.ViewDependentUseCase;
 
 public class DependentManagerUseCase extends UseCase{
 
   private final Menu<Integer> menu;
   private boolean repeatMenu = true;
 
-  public DependentManagerUseCase(Account account) {
+  public DependentManagerUseCase(String accountId) {
 
     menu = Menu.create();
 
-    UseCase view = new ViewDependentUseCase(account.getAccountId());
-    UseCase add = new AddDependentUseCase(account.getAccountId());
-    UseCase remove = new RemoveDependentUseCase(account.getAccountId());
+    UseCase view = new ViewDependentUseCase(accountId);
+    UseCase add = new AddDependentUseCase(accountId);
+    UseCase remove = new RemoveDependentUseCase(accountId);
 
 
     menu.addOptionWithAction(1, Message.ALL_DEPENDENT, view::execute);

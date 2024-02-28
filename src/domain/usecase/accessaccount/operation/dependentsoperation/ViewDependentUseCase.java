@@ -1,4 +1,4 @@
-package domain.usecase.accessaccount.commonoperations.dependentsoperation;
+package domain.usecase.accessaccount.operation.dependentsoperation;
 
 import domain.service.AccountService;
 import domain.usecase.Message;

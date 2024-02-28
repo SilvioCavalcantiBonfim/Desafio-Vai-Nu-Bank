@@ -1,18 +1,20 @@
-package domain.usecase.accessaccount.commonoperations;
+package domain.usecase.accessaccount.operation;
 
 import java.math.BigDecimal;
 
-import domain.entity.account.Account;
+import domain.service.AccountService;
 import domain.usecase.Message;
 import domain.usecase.UseCase;
 import exception.InvalidDecrementAmountException;
 
 public class WithdrawUseCase extends UseCase {
 
-  private final Account account;
+  private final String accountId;
+  private final AccountService accountService;
 
-  public WithdrawUseCase(Account account) {
-    this.account = account;
+  public WithdrawUseCase(String accountId) {
+    this.accountId = accountId;
+    this.accountService = AccountService.getInstance();
   }
 
   @Override
@@ -20,7 +22,7 @@ public class WithdrawUseCase extends UseCase {
     outputController.print(Message.REQUEST_WITHDRAW_VALUE);
     try {
       Double value = inputController.nextDouble();
-      account.withdraw(BigDecimal.valueOf(value));
+      accountService.withdraw(accountId, BigDecimal.valueOf(value));
       outputController.print(Message.WITHDRAW_SUCCESS);
     } catch (NumberFormatException e) {
       outputController.print(Message.ILLEGAL_WITHDRAW_VALUE);

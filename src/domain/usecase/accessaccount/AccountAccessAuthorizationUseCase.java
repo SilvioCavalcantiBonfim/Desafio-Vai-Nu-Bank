@@ -5,7 +5,6 @@ import domain.entity.account.Account;
 import domain.service.AccountService;
 import domain.usecase.Message;
 import domain.usecase.UseCase;
-import domain.usecase.accessaccount.savingaccountoperations.BankingOperationsSavingsAccountMenuUseCase;
 
 public class AccountAccessAuthorizationUseCase extends UseCase {
 
@@ -26,7 +25,7 @@ public class AccountAccessAuthorizationUseCase extends UseCase {
   }
   
   private void accountPresent(Account account){
-    UseCase bankingOperationsSavingsAccountMenuUseCase = new BankingOperationsSavingsAccountMenuUseCase(account);
+    UseCase bankingOperationsSavingsAccountMenuUseCase = new BankingOperationsAccountMenuUseCase(account.getAccountId());
     bankingOperationsSavingsAccountMenuUseCase.execute();
   }
 }

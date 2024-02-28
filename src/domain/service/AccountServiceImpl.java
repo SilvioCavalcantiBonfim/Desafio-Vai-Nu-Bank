@@ -108,5 +108,23 @@ class AccountServiceImpl implements AccountService{
     accountRepository.save(account);
     return account;
   }
+
+  @Override
+  public BigDecimal getBalanceAccount(String accountId) {
+    Account account = findById(accountId).orElseThrow(AccountNotFoundException::new);
+    return account.getValue();
+  }
+
+  @Override
+  public void deposit(String accountId, BigDecimal value) {
+    Account account = findById(accountId).orElseThrow(AccountNotFoundException::new);
+    account.deposit(value);
+  }
+
+  @Override
+  public void withdraw(String accountId, BigDecimal value) {
+    Account account = findById(accountId).orElseThrow(AccountNotFoundException::new);
+    account.withdraw(value);
+  }
   
 }
